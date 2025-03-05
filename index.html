@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>2 INPUT 1 OUTPUT TEMPLATE</title>
     
-    <!-- Include Google Fonts for Roboto -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+   
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <style>
         /* Global Reset */
@@ -15,7 +18,11 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 100;
+            font-style: normal;
+          
             background-color: black; /* Set the initial background color to black */
             transition: background-color 0.3s ease; /* Smooth transition for background color change */
         }
@@ -27,6 +34,7 @@
             align-items: center;     /* Center vertically */
             height: 100vh;
             text-align: center;
+            flex-direction: column;
         }
 
         /* Flexbox row layout */
@@ -34,20 +42,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: -59vh;
+            margin-top: 4vh;
         }
 
         /* Style for the input fields */
         #charInput1, #charInput2 {
-            font-size: 24px;
+            font-size: 18px;
             padding: 10px;
-            width: 50px;
+     
             text-align: center;
             margin-right: 10px;  /* Space between input fields */
             width: 7.5vw;
             height: 2.4vh;
             /* Add the border, remove background and text color */
-            border: 2px solid white;   /* White border */
+            border: 1px solid white;   /* White border */
             background-color: transparent; /* No fill color */
             color: white;               /* White text */
             transition: all 0.3s ease;  /* Smooth transition for focus and hover effect */
@@ -58,18 +66,23 @@
             outline: none;             /* Remove default outline */
             border-color: #3498db;     /* Change border color on focus (optional, you can pick any color) */
             background-color: rgba(52, 152, 219, 0.1); /* Light background color on focus (optional) */
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 100;
+            font-style: normal;
         }
 
         #submitButton {
             font-family: 'Roboto', sans-serif; /* Use Roboto font */
-            font-size: 20px;
-         
+            font-size: 18px;
+         height: 5.2vh;
             cursor: pointer;
-
-            width: 15vw;
-            height: 5.5vh;
+            padding-left: 2vw;
+            padding-right: 2vw;
+      
+           
             /* Add the border, remove background and text color */
-            border: 2px solid white;   /* White border */
+            border: 1px solid white;   /* White border */
             background-color: transparent; /* No fill color */
             color: white;               /* White text */
             transition: all 0.3s ease;  /* Smooth transition for hover effect */
@@ -87,11 +100,58 @@
             max-width: 300px;  /* Set a max-width for the image */
             height: auto;
         }
+        .title{
+          
+            font-size: 6vh;
+            align-items: center;
+            justify-content: center;
+            text-align: center; 
+            color: white;
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 6.5vh;
+        }
+        .title-one{
+            color: white;
+            font-family: "Roboto", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 6.5vh;
+        }
+        h1{
+         color: white;
+   
+        }
+        p{
+         margin-bottom: 2vh;
+         margin-top: -0.5vh;
+        }
+        #bottom{
+         margin-bottom: 2vh;
+         margin-top: 4vh;
+        }
+
+
     </style>
 </head>
 <body>
 
 <div class="container">
+<div class="title-one" id="titleSection">
+  <div class="title">
+    <p>make your own pattern</p>
+  </div>  
+  <div class="title">
+    <p>make your own pattern</p>
+  </div>  
+  <div class="title">
+    <p>make your own pattern</p>
+  </div>  
+
+</div>    
     <div class="content">
         <!-- INPUT FIELD FOR 1 CHARACTER -->
         <input type="text" id="charInput1" maxlength="1" placeholder="A-C" pattern="A-C">
@@ -104,6 +164,12 @@
         <!-- IMAGE TO DISPLAY -->
         <img id="displayedImage" src="" alt="Displayed Image">
     </div>
+    
+    
+    
+    <div class="title" >
+        <p id="bottom">make your own pattern</p>
+      </div> 
 </div>
 <script>
     function displayImage() {
@@ -125,6 +191,8 @@
             document.body.style.backgroundPosition = "center";  // Center the background image
             document.body.style.backgroundRepeat = "no-repeat";  // Prevent repeating the background image
             imgElement.style.display = "none";  // Hide the img element since we set a background
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         } 
         
         // Check if input1 is 'A' and input2 is '2'
@@ -134,6 +202,8 @@
             document.body.style.backgroundPosition = "center";  // Center the background image
             document.body.style.backgroundRepeat = "no-repeat";  // Prevent repeating the background image
             imgElement.style.display = "none";  // Hide the img element since we set a background
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
 
         else if (input1_letter === "A" && input2_number === "3") {
@@ -142,13 +212,17 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "A" && input2_number === "4") {
             document.body.style.backgroundImage = "url('A4.jpg')";
             document.body.style.backgroundSize = "cover";  
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
+            imgElement.style.display = "none"; 
+            document.getElementById('titleSection').style.opacity = '0'; 
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "A" && input2_number === "5") {
             document.body.style.backgroundImage = "url('A5.jpg')";
@@ -156,6 +230,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "A" && input2_number === "6") {
             document.body.style.backgroundImage = "url('A6.jpg')";
@@ -163,6 +239,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "A" && input2_number === "7") {
             document.body.style.backgroundImage = "url('A7.jpg')";
@@ -170,6 +248,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "A" && input2_number === "8") {
             document.body.style.backgroundImage = "url('A8.jpg')";
@@ -177,6 +257,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "A" && input2_number === "9") {
             document.body.style.backgroundImage = "url('A9.jpg')";
@@ -184,6 +266,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "A" && input2_number === "10") {
             document.body.style.backgroundImage = "url('A10.jpg')";
@@ -191,6 +275,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
 
 
@@ -200,6 +286,8 @@
             document.body.style.backgroundPosition = "center";  // Center the background image
             document.body.style.backgroundRepeat = "no-repeat";  // Prevent repeating the background image
             imgElement.style.display = "none";  // Hide the img element since we set a background
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
 
         else if (input1_letter === "B" && input2_number === "2") {
@@ -207,7 +295,10 @@
             document.body.style.backgroundSize = "cover"; 
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
+            imgElement.style.display = "none"; 
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
+ 
         }
 
         else if (input1_letter === "B" && input2_number === "3") {
@@ -216,6 +307,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "B" && input2_number === "4") {
             document.body.style.backgroundImage = "url('B4.jpg')";
@@ -223,6 +316,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "B" && input2_number === "5") {
             document.body.style.backgroundImage = "url('B5.jpg')";
@@ -230,6 +325,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "B" && input2_number === "6") {
             document.body.style.backgroundImage = "url('B6.jpg')";
@@ -237,6 +334,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "B" && input2_number === "7") {
             document.body.style.backgroundImage = "url('B7.jpg')";
@@ -244,6 +343,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "B" && input2_number === "8") {
             document.body.style.backgroundImage = "url('B8.jpg')";
@@ -251,6 +352,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "B" && input2_number === "9") {
             document.body.style.backgroundImage = "url('B9.jpg')";
@@ -258,6 +361,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "B" && input2_number === "10") {
             document.body.style.backgroundImage = "url('B10.jpg')";
@@ -265,6 +370,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
 
 
@@ -274,6 +381,8 @@
             document.body.style.backgroundPosition = "center";  // Center the background image
             document.body.style.backgroundRepeat = "no-repeat";  // Prevent repeating the background image
             imgElement.style.display = "none";  // Hide the img element since we set a background
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
 
         else if (input1_letter === "C" && input2_number === "2") {
@@ -282,6 +391,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
 
         else if (input1_letter === "C" && input2_number === "3") {
@@ -290,6 +401,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "C" && input2_number === "4") {
             document.body.style.backgroundImage = "url('C4.jpg')";
@@ -297,6 +410,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "C" && input2_number === "5") {
             document.body.style.backgroundImage = "url('C5.jpg')";
@@ -304,6 +419,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "C" && input2_number === "6") {
             document.body.style.backgroundImage = "url('C6.jpg')";
@@ -311,6 +428,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "C" && input2_number === "7") {
             document.body.style.backgroundImage = "url('C7.jpg')";
@@ -318,6 +437,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "C" && input2_number === "8") {
             document.body.style.backgroundImage = "url('C8.jpg')";
@@ -325,6 +446,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "C" && input2_number === "9") {
             document.body.style.backgroundImage = "url('C9.jpg')";
@@ -332,6 +455,8 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
         else if (input1_letter === "C" && input2_number === "10") {
             document.body.style.backgroundImage = "url('C10.jpg')";
@@ -339,9 +464,13 @@
             document.body.style.backgroundPosition = "center";  
             document.body.style.backgroundRepeat = "no-repeat";  
             imgElement.style.display = "none";  
+            document.getElementById('titleSection').style.opacity = '0';
+            document.getElementById('bottom').style.opacity = '0';
         }
 
+      
 
+ 
 
 
 
