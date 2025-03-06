@@ -191,7 +191,7 @@
         }
     </style>
 </head>
-<body>
+<body id ="Export">
 
 <div class="container">
     <div class="title-one" id="titleSection">
@@ -222,7 +222,7 @@
         <p id="bottom">make your own pattern</p>
     </div> 
     <!-- Floating Export to JPEG Button -->
-    <button onclick="exportToJPEG()" id="exportButton">Export to JPEG</button>
+    <button onclick="downloadBackground()" id="exportButton">Export to JPEG</button>
     <!-- Full screen black background -->
     <div id="errorBackground"></div>
 
@@ -273,7 +273,7 @@
             "C8": "C8.jpg",
             "C9": "C9.jpg",
             "C10": "C10.jpg",
-            // Add more combinations as needed
+            
         };
 
         // Generate the key from the input values
@@ -345,6 +345,23 @@
         document.getElementById("exportButton").style.display = "none";
         document.querySelector('.content').style.backgroundColor = "transparent";
     }
+      
+    function downloadBackground() {
+            const BodyID = document.getElementById("Export");
+            const bgImage = window.getComputedStyle(BodyID).backgroundImage;
+            const url = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, ''); 
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "url('${backgrounds[key]}')"; 
+            document.body.appendChild(link);
+            link.click();
+            // document.body.removeChild(link);
+
+            // window.open(url, "_blank")
+        }
+
+
 </script>
 
 </body>
