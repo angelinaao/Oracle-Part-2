@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>2 INPUT 1 OUTPUT TEMPLATE</title>
     
-   
- 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <style>
         /* Global Reset */
@@ -22,7 +20,6 @@
             font-optical-sizing: auto;
             font-weight: 100;
             font-style: normal;
-          
             background-color: black; /* Set the initial background color to black */
             transition: background-color 0.3s ease; /* Smooth transition for background color change */
         }
@@ -35,6 +32,7 @@
             height: 100vh;
             text-align: center;
             flex-direction: column;
+            padding-top: 0.3vh;
         }
 
         /* Flexbox row layout */
@@ -42,19 +40,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 4vh;
         }
 
         /* Style for the input fields */
         #charInput1, #charInput2 {
             font-size: 18px;
             padding: 10px;
-     
             text-align: center;
             margin-right: 10px;  /* Space between input fields */
-            width: 7.5vw;
-            height: 2.4vh;
-            /* Add the border, remove background and text color */
+            width: 4.5vw;
+            height: 1.5vh;
             border: 1px solid white;   /* White border */
             background-color: transparent; /* No fill color */
             color: white;               /* White text */
@@ -75,13 +70,10 @@
         #submitButton {
             font-family: 'Roboto', sans-serif; /* Use Roboto font */
             font-size: 18px;
-         height: 5.2vh;
+            height: 4.3vh;
             cursor: pointer;
             padding-left: 2vw;
             padding-right: 2vw;
-      
-           
-            /* Add the border, remove background and text color */
             border: 1px solid white;   /* White border */
             background-color: transparent; /* No fill color */
             color: white;               /* White text */
@@ -93,15 +85,7 @@
             color: black;               /* Change text color to black on hover */
         }
 
-        /* Style for the image */
-        #displayedImage {
-            display: none; /* Initially hidden */
-            margin-left: 20px; /* Space between button and image */
-            max-width: 300px;  /* Set a max-width for the image */
-            height: auto;
-        }
         .title{
-          
             font-size: 6vh;
             align-items: center;
             justify-content: center;
@@ -122,36 +106,105 @@
             font-size: 6.5vh;
         }
         h1{
-         color: white;
-   
+            color: white;
         }
         p{
-         margin-bottom: 2vh;
-         margin-top: -0.5vh;
+            margin-bottom: 2vh;
+            margin-top: -0.5vh;
         }
         #bottom{
-         margin-bottom: 2vh;
-         margin-top: 4vh;
+            margin-bottom: 1vh;
+            margin-top: 3vh;
+        }
+        #new{
+            padding-bottom: 2vh;
+        }
+        /* Full-screen black background when input is invalid */
+        #errorBackground {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(175, 10, 10);
+            z-index: 9999; /* Ensure it stays on top of everything else */
+            display: none; /* Initially hidden */
         }
 
+        /* Error message styling */
+        #errorMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            font-family: 'Roboto', sans-serif;
+            z-index: 10000; /* Ensure it stays on top of the background */
+            text-align: center;
+            font-weight: 400;
+            font-style: normal;
+        }
 
+        #tryAgainButton {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: 1px solid white;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 30000;
+            margin-top: -21vh;
+        }
+
+        #tryAgainButton:hover {
+            background-color: white;
+            color: black;
+        }
+        img{
+            opacity: 0;
+            width: 0;
+        }
+
+        /* Floating Export Button */
+        #exportButton {
+            position: fixed; /* Fixed position to make it float */
+            bottom: 20px;   /* Position from the bottom */
+            right: 20px;    /* Position from the right */
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 1px solid white;
+            background-color: black; /* Black background */
+            color: white;            /* White text */
+            cursor: pointer;
+            border-radius: 0;     /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for floating effect */
+            transition: all 0.3s ease; /* Smooth transition for hover effect */
+            display: none; /* Initially hidden */
+            z-index: 1000; /* Ensure it stays on top of other elements */
+        }
+
+        #exportButton:hover {
+            background-color: white; /* White background on hover */
+            color: black;            /* Black text on hover */
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-<div class="title-one" id="titleSection">
-  <div class="title">
-    <p>make your own pattern</p>
-  </div>  
-  <div class="title">
-    <p>make your own pattern</p>
-  </div>  
-  <div class="title">
-    <p>make your own pattern</p>
-  </div>  
-
-</div>    
+    <div class="title-one" id="titleSection">
+        <div class="title">
+            <p>make your own pattern</p>
+        </div>  
+        <div class="title">
+            <p>make your own pattern</p>
+        </div>  
+        <div class="title" id="new">
+            <p>make your own pattern</p>
+        </div>  
+    </div>    
     <div class="content">
         <!-- INPUT FIELD FOR 1 CHARACTER -->
         <input type="text" id="charInput1" maxlength="1" placeholder="A-C" pattern="A-C">
@@ -165,329 +218,132 @@
         <img id="displayedImage" src="" alt="Displayed Image">
     </div>
     
-    
-    
-    <div class="title" >
+    <div class="title">
         <p id="bottom">make your own pattern</p>
-      </div> 
+    </div> 
+    <!-- Floating Export to JPEG Button -->
+    <button onclick="exportToJPEG()" id="exportButton">Export to JPEG</button>
+    <!-- Full screen black background -->
+    <div id="errorBackground"></div>
+
+    <!-- Error message that will be shown on top of the black background -->
+    <div id="errorMessage" style="display: none;">
+        <p>please enter a value <br>between A-C and 1-10</p>
+    </div>
+
+    <!-- Add the Try Again button below the error message -->
+    <button id="tryAgainButton" style="display: none;" onclick="resetError()">try again</button>
 </div>
+
 <script>
     function displayImage() {
         const imgElement = document.getElementById("displayedImage");
-
-        // Letter from input 1
         const input1_letter = document.getElementById("charInput1").value.toUpperCase();
-        // Number from input 2
         const input2_number = document.getElementById("charInput2").value;
 
-        // First, reset the background image and show the image again
-        document.body.style.backgroundImage = ""; 
-        imgElement.style.display = "block";  
+        // Mapping object to handle the backgrounds and styles dynamically
+        const backgrounds = {
+            "A1": "A.jpg",
+            "A2": "A2.jpg",
+            "A3": "A3.jpg",
+            "A4": "A4.jpg",
+            "A5": "A5.jpg",
+            "A6": "A6.jpg",
+            "A7": "A7.jpg",
+            "A8": "A8.jpg",
+            "A9": "A9.jpg",
+            "A10": "A10.jpg",
+            "B1": "B1.jpg",
+            "B2": "B2.jpg",
+            "B3": "B3.jpg",
+            "B4": "B4.jpg",
+            "B5": "B5.jpg",
+            "B6": "B6.jpg",
+            "B7": "B7.jpg",
+            "B8": "B8.jpg",
+            "B9": "B9.jpg",
+            "B10": "B10.jpg",
+            "C1": "C1.jpg",
+            "C2": "C2.jpg",
+            "C3": "C3.jpg",
+            "C4": "C4.jpg",
+            "C5": "C5.jpg",
+            "C6": "C6.jpg",
+            "C7": "C7.jpg",
+            "C8": "C8.jpg",
+            "C9": "C9.jpg",
+            "C10": "C10.jpg",
+            // Add more combinations as needed
+        };
 
-        // Check if input1 is 'A' and input2 is '1'
-        if (input1_letter === "A" && input2_number === "1") {
-            document.body.style.backgroundImage = "url('A.jpg')";
-            document.body.style.backgroundSize = "cover";  // Ensure the background covers the whole page
-            document.body.style.backgroundPosition = "center";  // Center the background image
-            document.body.style.backgroundRepeat = "no-repeat";  // Prevent repeating the background image
-            imgElement.style.display = "none";  // Hide the img element since we set a background
+        // Generate the key from the input values
+        const key = input1_letter + input2_number;
+
+        // If the key exists in the backgrounds object, apply the background and styles
+        if (backgrounds[key]) {
+            document.body.style.backgroundImage = `url('${backgrounds[key]}')`;
+            document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundPosition = "center";
+            document.body.style.backgroundRepeat = "no-repeat";
+            imgElement.style.display = "none";
             document.getElementById('titleSection').style.opacity = '0';
             document.getElementById('bottom').style.opacity = '0';
-        } 
+            
+            // Handle background color changes based on the first letter
+            if (input1_letter === 'A') {
+                document.querySelector('.content').style.backgroundColor = "#601212"; // Example color, adjust as needed
+            } else if (input1_letter === 'B') {
+                document.querySelector('.content').style.backgroundColor = "#D4731F";
+            } else if (input1_letter === 'C') {
+                document.querySelector('.content').style.backgroundColor = "#DCB420";
+            }
+        } else {
+            // Reset to default if the combination doesn't exist
+            document.body.style.backgroundImage = "";
+            imgElement.style.display = "block";
+            document.getElementById('titleSection').style.opacity = '1';
+            document.getElementById('bottom').style.opacity = '1';
+        }
+        if (input1_letter && input2_number) {
+            // Display the Export to JPEG button
+            document.getElementById("exportButton").style.display = "block";
+        }
+
+        // Check if the input is valid (A-C and 1-10)
+        const validInput = /^[A-C]$/.test(input1_letter) && /^[1-9]$|^10$/.test(input2_number);
+
+        if (!validInput) {
+            // Show the black background and error message
+            document.getElementById("errorBackground").style.display = "block";
+            document.getElementById("errorMessage").style.display = "block";
+            document.getElementById("tryAgainButton").style.display = "block";
+
+            // Stop further processing if the input is invalid
+            document.body.style.backgroundImage = ""; // Remove any background image
+            imgElement.style.display = "block"; // Display the placeholder image
+            document.getElementById('titleSection').style.opacity = '1';
+            document.getElementById('bottom').style.opacity = '1';
+            return;
+        }
+
+        // If valid, hide the error message and reset the background
+        document.getElementById("errorBackground").style.display = "none";
+        document.getElementById("errorMessage").style.display = "none";
+    }
+
+    function resetError() {
+        // Hide the black background and error message completely
+        document.getElementById("errorBackground").style.display = "none";
+        document.getElementById("errorMessage").style.display = "none";
+        document.getElementById("tryAgainButton").style.display = "none"; // Hide the Try Again button
         
-        // Check if input1 is 'A' and input2 is '2'
-        else if (input1_letter === "A" && input2_number === "2") {
-            document.body.style.backgroundImage = "url('A2.jpg')";
-            document.body.style.backgroundSize = "cover";  // Ensure the background covers the whole page
-            document.body.style.backgroundPosition = "center";  // Center the background image
-            document.body.style.backgroundRepeat = "no-repeat";  // Prevent repeating the background image
-            imgElement.style.display = "none";  // Hide the img element since we set a background
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-
-        else if (input1_letter === "A" && input2_number === "3") {
-            document.body.style.backgroundImage = "url('A3.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "A" && input2_number === "4") {
-            document.body.style.backgroundImage = "url('A4.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none"; 
-            document.getElementById('titleSection').style.opacity = '0'; 
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "A" && input2_number === "5") {
-            document.body.style.backgroundImage = "url('A5.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "A" && input2_number === "6") {
-            document.body.style.backgroundImage = "url('A6.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "A" && input2_number === "7") {
-            document.body.style.backgroundImage = "url('A7.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "A" && input2_number === "8") {
-            document.body.style.backgroundImage = "url('A8.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "A" && input2_number === "9") {
-            document.body.style.backgroundImage = "url('A9.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "A" && input2_number === "10") {
-            document.body.style.backgroundImage = "url('A10.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-
-
-        else if (input1_letter === "B" && input2_number === "1") {
-            document.body.style.backgroundImage = "url('B1.jpg')";
-            document.body.style.backgroundSize = "cover";  // Ensure the background covers the whole page
-            document.body.style.backgroundPosition = "center";  // Center the background image
-            document.body.style.backgroundRepeat = "no-repeat";  // Prevent repeating the background image
-            imgElement.style.display = "none";  // Hide the img element since we set a background
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-
-        else if (input1_letter === "B" && input2_number === "2") {
-            document.body.style.backgroundImage = "url('B2.jpg')";
-            document.body.style.backgroundSize = "cover"; 
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none"; 
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
- 
-        }
-
-        else if (input1_letter === "B" && input2_number === "3") {
-            document.body.style.backgroundImage = "url('B3.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "B" && input2_number === "4") {
-            document.body.style.backgroundImage = "url('B4.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "B" && input2_number === "5") {
-            document.body.style.backgroundImage = "url('B5.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "B" && input2_number === "6") {
-            document.body.style.backgroundImage = "url('B6.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "B" && input2_number === "7") {
-            document.body.style.backgroundImage = "url('B7.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "B" && input2_number === "8") {
-            document.body.style.backgroundImage = "url('B8.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "B" && input2_number === "9") {
-            document.body.style.backgroundImage = "url('B9.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "B" && input2_number === "10") {
-            document.body.style.backgroundImage = "url('B10.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-
-
-        else if (input1_letter === "C" && input2_number === "1") {
-            document.body.style.backgroundImage = "url('C1.jpg')";
-            document.body.style.backgroundSize = "cover";  // Ensure the background covers the whole page
-            document.body.style.backgroundPosition = "center";  // Center the background image
-            document.body.style.backgroundRepeat = "no-repeat";  // Prevent repeating the background image
-            imgElement.style.display = "none";  // Hide the img element since we set a background
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-
-        else if (input1_letter === "C" && input2_number === "2") {
-            document.body.style.backgroundImage = "url('C2.jpg')";
-            document.body.style.backgroundSize = "cover"; 
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-
-        else if (input1_letter === "C" && input2_number === "3") {
-            document.body.style.backgroundImage = "url('C3.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "C" && input2_number === "4") {
-            document.body.style.backgroundImage = "url('C4.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "C" && input2_number === "5") {
-            document.body.style.backgroundImage = "url('C5.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "C" && input2_number === "6") {
-            document.body.style.backgroundImage = "url('C6.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "C" && input2_number === "7") {
-            document.body.style.backgroundImage = "url('C7.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "C" && input2_number === "8") {
-            document.body.style.backgroundImage = "url('C8.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "C" && input2_number === "9") {
-            document.body.style.backgroundImage = "url('C9.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-        else if (input1_letter === "C" && input2_number === "10") {
-            document.body.style.backgroundImage = "url('C10.jpg')";
-            document.body.style.backgroundSize = "cover";  
-            document.body.style.backgroundPosition = "center";  
-            document.body.style.backgroundRepeat = "no-repeat";  
-            imgElement.style.display = "none";  
-            document.getElementById('titleSection').style.opacity = '0';
-            document.getElementById('bottom').style.opacity = '0';
-        }
-
-      
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Reset the background and content visibility
+        document.body.style.backgroundImage = ""; // Remove the background image
+        document.body.style.backgroundColor = ""; // Reset the background color
+        document.getElementById('titleSection').style.opacity = '1'; // Make the title section visible again
+        document.getElementById('bottom').style.opacity = '1'; // Make the bottom text visible again
+        document.getElementById("exportButton").style.display = "none";
+        document.querySelector('.content').style.backgroundColor = "transparent";
     }
 </script>
 
