@@ -351,6 +351,8 @@
             const bgImage = window.getComputedStyle(BodyID).backgroundImage;
             const url = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, ''); 
 
+            window.open(url, "_blank")
+
             const link = document.createElement("a");
             link.href = url;
             link.download = "url('${backgrounds[key]}')"; 
@@ -358,7 +360,7 @@
             link.click();
             // document.body.removeChild(link);
 
-            // window.open(url, "_blank")
+            
         }
 
 
